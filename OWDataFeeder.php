@@ -188,26 +188,25 @@ function findAndUpdateData($item,$result, $conn) {
                 break;  
             }
 
+            echo "check <b>".$item[1]."</b> [".$row["id"]."]<br>";
+
             // IF DATA IS NEWER THAN LAST ONE
             if ($jsWeatherCity['dt'] != $row["time"]) {
-                echo "check ".$item[1]." [".$row["id"]."]<br>";
-
                 echo "last temp is ".$row['temperature']."°C, wind is ".$row['wind_speed']."m/s and cloud coverage is ".$row['clouds']."% <br>";
                 echo "new temp is ".$jsWeatherCity['main']['temp']."°C, wind is ".$jsWeatherCity['wind']['speed']."m/s and cloud coverage is    ".$jsWeatherCity['clouds']['all']."% <br>";
 
+                // CREATE new DATA
+                registerNewMeasurement($item, $conn, $jsWeatherCity);
+                $nbUpdates = $nbUpdates+1;
+                echo "<br>";
+            } else {
                 // UPDATE last data
                 $sql = "UPDATE weather SET update_time = now() WHERE id = '".$row["id"]."' AND creation_time = '" . $row["creation_time"] ."'";
                 if ($conn->query($sql) === TRUE) {
-                    $nbUpdates = $nbUpdates+1;
-                    echo "> data updated";
+                    echo "> data updated<br><br>";
                 } else {
                     echo "[!] Error updating record: " . $conn->error."<br>";
                 }
-
-                // CREATE new DATA
-                registerNewMeasurement($item, $conn, $jsWeatherCity);
-                echo " & new data saved<br>";
-                echo "<br>";
             }
             break;
         }
@@ -302,6 +301,7 @@ function registerNewMeasurement($data, $conn, $rbJson) {
     //      VALUES ('".$fname."', '".$lname."', '".$email."', '".$company."', '".$sector."', '".$country."', '".$address."')";
 
     if ($conn->query($sql) === TRUE) {
+        echo "> new data saved<br>";
         return true;
     } else {
         echo "   ---   [!] Error: " . $sql . " :: " . $conn->error;
