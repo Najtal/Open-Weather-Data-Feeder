@@ -31,7 +31,7 @@ $GLOBALS['servername'] = "";
 $GLOBALS['username'] = "";
 $GLOBALS['password'] = "";
 $GLOBALS['dbname'] = "";
-$GLOBALS['apiCode'] = '';
+$GLOBALS['apiCode'] = "";
 
 
 // CITIES
@@ -78,18 +78,18 @@ $cities = Array(
     Array("FR","Rouan",2982682,47.1858, -1.8599),
     Array("FR","Paris",2973781,48.8566, 2.3515),
     // SUISSE
-    Array("FR","Genève",6691638,46.2018, 6.1466),
-    Array("FR","Bern",2661552,46.9483, 7.4515),
-    Array("FR","Zurich",6295546,47.3724, 8.5423),
+    Array("CH","Genève",6691638,46.2018, 6.1466),
+    Array("CH","Bern",2661552,46.9483, 7.4515),
+    Array("CH","Zurich",6295546,47.3724, 8.5423),
     // GREAT BRITAIN
     Array("GB","London",2643743,51.5073, -0.1277),
     Array("GB","Manchester",2643123,53.4791, -2.2442),
     Array("GB","Edinburgh",3333229,55.9496, -3.1915),
     Array("GB","Belfast",2655984,54.597, -5.9301),    
     // Ireland
-    Array("IR","Dublin",2962486,53.3498, -6.2603),
-    Array("IR","Galway",2964180,53.2744, -9.0491),
-    Array("IR","Cork",2965140,51.8979, -8.4706)
+    Array("IE","Dublin",2962486,53.3498, -6.2603),
+    Array("IE","Galway",2964180,53.2744, -9.0491),
+    Array("IE","Cork",2965140,51.8979, -8.4706)
 ); 
 
 // STATS
